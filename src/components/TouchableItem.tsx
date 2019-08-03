@@ -5,7 +5,7 @@ import {
   ViewProps,
   TouchableNativeFeedback,
   NativeSyntheticEvent,
-  NativeTouchEvent
+  NativeTouchEvent,
 } from 'react-native';
 
 type IProps = ViewProps & {

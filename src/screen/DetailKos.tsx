@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import Text from '../components/Text';
 import Button from '../components/Button';
+import Header from '../components/Header';
 import Picker from '../components/Picker';
 import PickerItem from '../components/PickerItem';
 import ListItem from '../components/ListItem';
@@ -16,16 +17,20 @@ interface IProps {
 
 class DetailKos extends Component<IProps> {
   static navigationOptions = {
-    headerRight: (
-      <Button title='Bijon'
-        pressColor='rgba(0, 0, 0, .32)' />
-    )
+    header: (<Header
+      title='header'
+      left={<Button title='h Left'
+        pressColor='rgba(0, 0, 0, .32)' />}
+      right={<Button variant='outlined' title='h Right'
+        pressColor='rgba(0, 0, 0, .32)' />}
+    />)
   }
   componentDidMount() {
   }
   render() {
     return (
       <View>
+        <StatusBar barStyle='dark-content'/>
         <Text variant='regular'>bijon {this.props.navigation.getParam('id')}</Text>
       </View>
     )

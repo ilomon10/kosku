@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import PickerItem from '../components/PickerItem';
@@ -46,6 +46,7 @@ class Filter extends Component<IProps, IState> {
   render(): React.ReactElement {
     return (
       <View>
+        <StatusBar barStyle='dark-content'/>
         <ListItem button border title='Harga' value={this.state.priceSelected}
           onPress={() => this.setState({ isPricePickerVisible: true })} />
         <PickerBase noBody visible={this.state.isPricePickerVisible}

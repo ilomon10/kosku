@@ -3,6 +3,8 @@ import { StyleSheet, Text as NativeText, TextProps } from 'react-native';
 
 import constant from './constant';
 
+import 'react-native-web';
+
 /**
  * Extends from TextProps
  */
