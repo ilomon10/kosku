@@ -18,7 +18,7 @@ interface IProps {
 class DetailKos extends Component<IProps> {
   static navigationOptions = {
     header: (<Header
-      title='header'
+      title='Detail'
       left={<Button title='h Left'
         pressColor='rgba(0, 0, 0, .32)' />}
       right={<Button variant='outlined' title='h Right'

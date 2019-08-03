@@ -28,14 +28,14 @@ const defaultProps: IProps = {
 }
 
 const Text: React.FunctionComponent<IProps> = ({ variant, style, ...props }: IProps): React.ReactElement => (
-  <NativeText {...props} style={{ ...styles.base, ...styles[variant], ...(style as object) }}></NativeText>
+  <NativeText {...props} style={[styles.base, styles[variant], style ]}></NativeText>
 )
 
 Text.defaultProps = defaultProps;
 
 export const styles = StyleSheet.create({
   "base": {
-    color: constant.colors['black']
+    color: constant.colors['black'],
   },
   "title-1": {
     fontSize: 44,

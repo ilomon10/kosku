@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView, SafeAreaViewProps } from 'react-navigation';
-import { StyleSheet, View, StyleProp, ViewStyle } from 'react-native';
+import { StyleSheet, View, StyleProp, ViewStyle, TextStyle } from 'react-native';
 
 import Text from './Text';
 
@@ -41,8 +41,11 @@ class Header extends Component<IProps> {
     )
   }
   private renderTitle = (comp: string | React.ReactNode) => {
+    const style: StyleProp<TextStyle> = {
+      fontWeight: 'bold'
+    }
     const HeaderTitleComponent = (): React.ReactNode =>
-      typeof comp !== 'string' ? comp : <Text>{comp}</Text>;
+      typeof comp !== 'string' ? comp : <Text variant='large' style={style}>{comp}</Text>;
     return this.renderSubview({
       style: {
         justifyContent: 'center',
@@ -86,6 +89,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 48,
     elevation: 1,
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   header: {
     ...StyleSheet.absoluteFillObject,

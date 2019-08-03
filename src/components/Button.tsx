@@ -8,6 +8,7 @@ import TouchableItem from './TouchableItem';
 
 export interface IProps {
   title: string;
+  size: 'small' | 'medium' | 'large';
   variant: 'text' | 'outlined' | 'contained';
   borderless: boolean;
   pressColor: string;
@@ -17,14 +18,15 @@ export interface IProps {
 class Button extends Component<IProps> {
   static defaultProps: IProps = {
     title: '',
+    size: 'medium',
     borderless: false,
     pressColor: 'rgba(0, 0, 0, .32)',
     variant: 'text'
   }
   render() {
-    const { onPress, borderless, variant, title } = this.props;
+    const { onPress, borderless, variant, title, size } = this.props;
     const wrapperStyle: StyleProp<ViewStyle> = {
-      overflow: borderless ? 'visible': 'hidden',
+      overflow: borderless ? 'visible' : 'hidden',
       borderRadius: styles.container.borderRadius,
     }
     return (
@@ -33,8 +35,8 @@ class Button extends Component<IProps> {
           pressColor='rgba(0,0,0,0.35)'
           onPress={onPress}
           borderless={borderless}
-          style={[styles.container, styles[variant]]}>
-          <Text variant='small' style={styles.title[`title-${variant}`]}>{title}</Text>
+          style={[styles.container, styles[variant], styles[size]]}>
+          <Text variant='small' style={[styles.title, styles[`title-${variant}`]]}>{title}</Text>
         </TouchableItem>
       </View>
     )
@@ -44,11 +46,10 @@ class Button extends Component<IProps> {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
-    height: 48,
-    paddingTop: 16,
-    paddingRight: 28,
-    paddingBottom: 16,
-    paddingLeft: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 8,
+    paddingRight: 8,
   },
   title: {
     textAlign: 'center',
@@ -72,6 +73,18 @@ const styles = StyleSheet.create({
   'title-contained': {
     color: constant.colors.white,
   },
+  'title-outlined': {
+    color: constant.colors.primary,
+  },
+  small: {
+    height: 24,
+  },
+  medium: {
+    height: 36,
+  },
+  large: {
+    height: 48,
+  }
 })
 
 export default Button;
